@@ -45,6 +45,13 @@ public class PlayerController : MonoBehaviour
             rigid.AddForce(Vector2.right * breakPower);
         }
 
+        if (rigid.velocity.y < -maxYSpeed)
+        {
+            Vector2 velocity = rigid.velocity;
+            velocity.y = -maxYSpeed;
+            rigid.velocity = velocity;
+        }
+
         animator.SetFloat("YSpeed", rigid.velocity.y);
     }
 
