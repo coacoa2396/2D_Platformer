@@ -86,19 +86,15 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Down()
     {
-        if (!downLayerCheck.Contain(downJumpObject.layer))
-        {
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), downJumpObject.GetComponent<Collider2D>(), true);
-            yield return new WaitForSeconds(0.5f);
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), downJumpObject.GetComponent<Collider2D>(), false);
-        }
-        else
+        if (downLayerCheck.Contain(downJumpObject.layer))
         {
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), downJumpObject.GetComponent<CompositeCollider2D>(), true);
             yield return new WaitForSeconds(0.5f);
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), downJumpObject.GetComponent<CompositeCollider2D>(), false);
-
+            
         }
+        
+        
     }
 
     void OnMove(InputValue value)
